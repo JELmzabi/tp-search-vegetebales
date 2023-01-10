@@ -1,21 +1,22 @@
 import VegetableContext from './VegetableContext'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 const VegetableProvider = ({children}) => {
 
     const [vegetables, setVegetables] = useState([])
 
-    function chercherVegetables(keywords = '') {
+    async function chercherVegetables(keywords = '') {
       const URL_API = 'http://localhost:3000/vegetables'
-      const segment = keywords === '' ? '' : '?type=' + keywords 
-          axios.get(URL_API + segment)
-          .then(data => {
-            console.log('then =>', data.data)
-            setVegetables(data.data)
-          })
-          .catch(err => console.log(err))
-        }
-
+      const segment = keywords === '' ? '' : '?type=' + keywords
+      try {
+      const response =  axios.get(URL_API + segment)
+      const result = await response.data
+      setVegetables(result.data)
+      }
+      catch(exect){
+          console.log(execpt)
+      }
+   }
   return (
     <VegetableContext.Provider 
     value={{
