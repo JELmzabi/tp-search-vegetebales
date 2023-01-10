@@ -5,17 +5,26 @@ const VegetableProvider = ({children}) => {
 
     const [vegetables, setVegetables] = useState([])
 
-    function chercherVegetables(keywords = 'vegetables') {
-// console.log(keywords)
-        // e.preventDefault()
-        axios.get('http://localhost:3000/' + keywords)
-        .then(data => {
-          console.log('then =>', data.data)
-          setVegetables(data.data)
-        })
-        .catch(err => console.log(err))
+    function chercherVegetables(keywords = '') {
 
-      }
+        if (keywords == '') {
+          axios.get('http://localhost:3000/vegetables')
+          .then(data => {
+            console.log('then =>', data.data)
+            setVegetables(data.data)
+          })
+          .catch(err => console.log(err))
+        }
+        else {
+            axios.get('http://localhost:3000/vegetables?type=' + keywords)
+            .then(data => {
+              console.log('then =>', data.data)
+              setVegetables(data.data)
+            })
+            .catch(err => console.log(err))
+          }
+          
+        }
 
   return (
     <VegetableContext.Provider 
