@@ -1,0 +1,10 @@
+{
+    "vegetables": [
+        { "id": 1, "nom": "banana", "type": "fruit" },
+        { "id": 2, "nom": "apple", "type": "fruit" },
+        { "id": 3, "nom": "kiwi", "type": "fruit" },
+        { "id": 4, "nom": "strawberry", "type": "fruit" }
+    ]
+
+
+}
