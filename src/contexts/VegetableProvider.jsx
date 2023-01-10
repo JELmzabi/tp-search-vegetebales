@@ -9,12 +9,12 @@ const VegetableProvider = ({children}) => {
       const URL_API = 'http://localhost:3000/vegetables'
       const segment = keywords === '' ? '' : '?type=' + keywords
       try {
-      const response = await  axios.get(URL_API + segment)
+      const response = await axios.get(URL_API + segment)
       const result = await response.data
-      setVegetables(result.data)
+      setVegetables(result)
       }
-      catch(exect){
-          console.log(execpt)
+      catch(except){
+          console.log(except)
       }
    }
   return (
